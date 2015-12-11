@@ -4,6 +4,7 @@
 import numpy as np
 from scipy.sparse import kron
 from sklearn.covariance import GraphLasso, graph_lasso
+import time
 
 def opt(X, y, b, Ominv, Siginv, lam, lam1, lam2, lam3, max_iter, tol=1e-5):
     """
@@ -21,7 +22,7 @@ def opt(X, y, b, Ominv, Siginv, lam, lam1, lam2, lam3, max_iter, tol=1e-5):
         W = opt_W(X, y, b, Ominv, Siginv, lam, lam1, N, D, K)
         b = opt_b(X, y, W, Ominv, Siginv, N, D, K)
         Siginv = opt_Siginv(X, y, W, b, Ominv, lam1, lam3, N, D, K)
-        Ominv = opt_Ominv(X, y, W, b, Siginv, lam2, N, D, K)        
+        Ominv = opt_Ominv(X, y, W, b, Siginv, lam2, N, D, K) 
 
         if np.linalg.norm(W - W_prev) < tol or c > max_iter:
             return W, b

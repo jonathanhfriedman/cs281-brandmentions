@@ -3,12 +3,12 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 
 def get_brands(num_brands):
-    with open('brands.txt', 'r') as infile:
+    with open('../data/brands.txt', 'r') as infile:
         brands = []
         for line in infile:
             brands.append(line.rstrip('\n').split(','))
             
-    with open('mfadata.txt', 'r') as infile:
+    with open('../data/mfadata.txt', 'r') as infile:
         posts, comments = [[] for i in range(2)]
         splitfile = infile.read().split('\n')
         for s in enumerate(splitfile):

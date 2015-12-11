@@ -19,7 +19,7 @@ def mrots_pred(W, b, X):
     b_dot = np.dot(np.ones((X.shape[0], 1)), b.reshape(1, b.shape[0]))
     return np.dot(X, W) + b_dot
 
-brandcount, fmat = get_brands(25)
+brandcount, fmat = get_brands(70)
 
 # Train-test split
 X_train, X_test, y_train, y_test = train_test_split(fmat, brandcount)
